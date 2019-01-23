@@ -5,9 +5,12 @@
  */
 
 import a1 from './a1'
+import b from './b'
+require('./a.css')
+require('./b.css')
 
 function bac() {
     console.log(jjj)
 }
 
-console.log('asdfae')
+console.log('this is a.js')

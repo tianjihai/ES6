@@ -5,6 +5,6 @@
  */
 
 
-console.log('haha')
+console.log('this is a1.js')
 
 alert('adf')
