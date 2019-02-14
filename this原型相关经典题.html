@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Foo() {
+        getName = function () {
+            console.log(1)
+        }
+        return this;
+    }
+    Foo.getName = function () {
+        console.log(2)
+    }
+    Foo.prototype.getName = function () {
+        console.log(3)
+    }
+    var getName = function () {
+        console.log(4)
+    }
+    function getName() {
+        console.log(5)
+    }
+
+    Foo.getName();  //输出2
+    getName();  //输出4  因为function getName()是函数声明，会优先加载执行，然后被之后的 var getName给覆盖了
+    Foo().getName(); //输出1
+    getName();  //输出1  因为执行了上一条并且返回了this给window 所以getName变成了1
+    new Foo.getName();//依然只是调用了Foo对象上的getName,又因为Foo.getNname，所以输出2
+    new Foo().getName();//先执行了new Foo()；返回一个对象，这个对象的getName为prototype上的getName,相当于(new Foo()).getName();
+    new new Foo().getName();
+</script>
+
+</body>
+</html>
