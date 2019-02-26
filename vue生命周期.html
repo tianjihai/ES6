@@ -9,69 +9,92 @@
 <body>
 
 <div id="container">
-
-    <div id="dom1">
-        heihei:{{test}}
-        <br/>
-        <input type="text" v-model="test" />
-    </div>
+    <button @click="changeMsg()">change</button>
+    <span>{{msg}}</span>
 </div>
 
-<script>
+<script type="text/javascript">
     var vm = new Vue({
-        el: "#container",
-        data: {
-            test: 'hello world'
+        el:'#container',
+        data:{
+            msg:'TigerChain'
         },
-        method:{
-            change(){
-                alert('asf')
-                this.data.test='WOW!'
+        beforeCreate(){
+            console.group("%c%s","color:red",'beforeCreate--实例创建前状态')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        created() {
+            console.group("%c%s","color:red",'created--实例创建完成状态')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        beforeMount() {
+            console.group("%c%s","color:red",'beforeMount--挂载之前的状态')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        mounted() {
+            console.group("%c%s","color:red",'mounted--已经挂载的状态')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        beforeUpdate(){
+            console.group("%c%s","color:red",'beforeUpdate--数据更新前的状态')
+            console.log("%c%s","color:blue","el  :"+this.$el.innerHTML)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+            console.log("%c%s","color:green","真实的 DOM 结构:"+document.getElementById('container').innerHTML)
+        },
+        updated() {
+            console.group("%c%s","color:red",'updated--数据更新完成时状态')
+            console.log("%c%s","color:blue","el  :"+this.$el.innerHTML)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+            console.log("%c%s","color:green","真实的 DOM 结构:"+document.getElementById('container').innerHTML)
+        },
+        activated() {
+            console.group("%c%s","color:red",'activated-- keep-alive 组件激活时调用')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        deactivated(){
+            console.group("%c%s","color:red",'deactivated-- keep-alive 停用时调用')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        beforeDestroy() {
+            console.group("%c%s","color:red",'beforeDestroy-- vue实例销毁前的状态')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        destroyed() {
+            console.group("%c%s","color:red",'destroyed-- vue实例销毁完成时调用')
+            console.log("%c%s","color:blue","el  :"+this.$el)
+            console.log(this.$el);
+            console.log("%c%s","color:blue","data  :"+this.$data)
+            console.log("%c%s","color:blue","message  :"+this.msg)
+        },
+        methods: {
+            changeMsg() {
+                this.msg = 'TigerChain111'
             }
-        },
-        beforeCreate: function () {
-            console.log(this);
-            showData('beforeCreate创建vue实例前', this);
-        },
-        created: function () {
-            showData('created创建vue实例后', this);
-        },
-        beforeMount: function () {
-            showData('beforeMount挂载到dom前', this);
-        },
-        mounted: function () {
-            showData('mounted挂载到dom后', this);
-        },
-        beforeUpdate: function () {
-            showData('beforeUpdate数据变化更新前', this);
-        },
-        updated: function () {
-            showData('updated数据变化更新后', this);
-        },
-        beforeDestroy: function () {
-            vm.test = "3333";
-            showData('beforeDestroyvue实例销毁前', this);
-        },
-        destroyed: function () {
-            showData('destroyedvue实例销毁后', this);
-        },
-
-
-
-    });
-
-    function realDom() {
-        console.log('真实dom结构：' + document.getElementById('dom1').innerHTML);
-    }
-
-    function showData(process, obj) {
-        console.log(process);
-        console.log('data 数据：' + obj.test)
-        console.log('挂载的对象：'+ obj.$el)
-        //console.log('页面DOM：' + document.getElementById('dom1').innerHTML)
-        realDom();
-        console.log('------------------')
-    }
+        }
+    })
 
    /*
    beforeCreate:
