@@ -51,15 +51,17 @@
             if (arr.indexOf(s[j]) !== -1) {
                 i = arr.lastIndexOf(s[j]) + 1;
                 arr.splice(0, i);
+                console.log("截取后："+arr)
             }
             num = Math.max(num, arr.length + 1);
             arr.push(s[j]);
+            console.log("push后："+arr)
         }
         console.log(num)
     };
 
 
-    var s="abcdabcaa";
+    var s="abcdabc";
     lengthOfLongestSubstring(s)
 </script>
 
