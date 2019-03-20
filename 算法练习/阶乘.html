@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function jc(num) {
+        if(num===1){
+            return num;
+        }
+        else{
+            return num*jc(num-1);
+        }
+    }
+
+    let jiecheng = jc(3);
+    console.log(jiecheng)
+</script>
+</body>
+</html>
