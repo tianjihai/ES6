@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<!--接口http://t.weather.sojson.com/api/weather/city/101030100-->
+
+<script>
+    $.ajax({
+        type: 'get',
+        url: 'http://t.weather.sojson.com/api/weather/city/101030100',
+        dataType: "json",
+        success: function (req) {
+            console.log('ajax写法：')
+            console.log(req)
+        },
+        error: function () {
+        }
+    });
+
+    /* axios({
+         method: 'get',
+         url: 'http://t.weather.sojson.com/api/weather/city/101030100'
+     })
+         .then(function (response) {
+             console.log(response);
+         })
+         .catch(function (error) {
+             console.log(error);
+         });*/
+
+
+    fetch("http://t.weather.sojson.com/api/weather/city/101030100")
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
+            console.log('fetch写法：')
+            console.log(data)
+        })
+
+
+
+    function getXhr() {
+        if (typeof XMLHttpRequest != 'undefined') {
+            return new XMLHttpRequest();
+        }
+    }
+
+    let xhr = getXhr();
+    //GET请求
+    xhr.open('GET', 'http://t.weather.sojson.com/api/weather/city/101030100');
+    xhr.send(null);
+    xhr.onreadystatechange = function (res) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log('原生xhr写法：')
+                console.log(JSON.parse(xhr.responseText))
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

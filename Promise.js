@@ -4,7 +4,7 @@
 
 
 let p = new Promise((resolve, reject) => {
-    //reject();
+    reject();
     console.log('---开始执行---')
     //做一些异步操作
     setTimeout(() => {
