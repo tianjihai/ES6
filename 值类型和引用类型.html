@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let a={jj:1}
+    let b=a;
+    b.jj=66;
+    console.log(a.jj) //66 因为引用类型的数据传递的是地址指针
+
+    let c=1;
+    let d=c;
+    d=2;
+    console.log(c) //1 值类型数据 传递的就是值本身 不是地址
+</script>
+</body>
+</html>
