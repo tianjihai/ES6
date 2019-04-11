@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+
+<ul class="list">
+    <li>aaa</li>
+    <li>bbb</li>
+    <li>ccc</li>
+</ul>
+
+<script>
+    //jQuery选择器 参考：http://www.w3school.com.cn/jquery/jquery_ref_selectors.asp
+    (() => {
+            /*$(".list").each(function () {
+                let rs = $(this).find("li").each(function () {
+                    console.log($(this).text())
+                });
+            })*/
+            let rs=$("li:eq(1)").css("color","red"); //选择第二个
+            console.log(rs)
+        }
+    )();
+</script>
+
+</body>
+</html>
