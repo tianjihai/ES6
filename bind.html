@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    (function (a) {
+       console.log(a);
+       var a=10;
+       function a() {};
+    }(100))
+
+    //输出function a(){}
+    //function()的优先级大于var,也就是说 function()会在var 的前面，所以function a()先提升到最上面，然后var再提升上去，
+    //变成：     所以输出a为 function a(){}
+   /* (function (a) {
+        var a;
+        function a(){}
+        console.log(a);
+        var a=10;
+        function a() {};
+    }(100))*/
+</script>
+</body>
+</html>
