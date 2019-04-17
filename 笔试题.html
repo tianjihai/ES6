@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.
+    /*function a() {
+        console.log('a');
+        c();
+    }
+    function b() {
+        console.log('b');
+        a();
+    }
+    function c() {
+        console.log('c');
+    }
+    a();b();c();  //a c b a c c  */
+
+    //2.
+    /*function a(fun) {
+        console.log('a');
+        fun(function () {
+            c();
+        })
+    }
+    function b(fun) {
+        console.log('b');
+        fun();
+    }
+    function c() {
+        console.log('c');
+    }
+    a(b);
+    c();   //a b c c  */
+
+    //3.
+    /*function a(fun) {
+        console.log('a');
+        fun(function () {
+            console.log('111');
+            c();
+        })
+    }
+    function b(fun) {
+        console.log('b')
+    }
+    function c() {
+        console.log('c')
+    }
+    a(function () {
+        b();
+    });
+    a(c);  //a b a c   */
+
+    //4.
+    /*function a(fun) {
+        console.log('a');
+        fun(function () {
+            console.log('111');
+            c();
+        })
+    }
+    function b(fun) {
+        console.log('b');
+    }
+    function c() {
+        console.log('c');
+    }
+    a(function (fun) {
+        fun();
+        b();
+    });
+    a(c);  //a  111 c b a c  */
+
+    //5.
+    /*var aa=function (item) {
+        console.log(item.a);
+    };
+    var list=[
+        {
+            a:1
+        },
+        {
+            a:2
+        },
+        {
+            a:3
+        }
+    ]
+    for(var i=0;i<list.length;i++){
+        aa(list[i]);
+    }  //1 2 3   */
+
+    //6.
+    /*var aa=function (item) {
+        console.log(item.a);
+    }
+    var list2=[
+        {
+            a:1
+        },
+        {
+            a:2
+        },
+        {
+            a:3
+        }
+    ]
+    for(var i=0;i<list2.length;i++){
+        var item=list2[i];
+        setTimeout(function () {
+            aa(item);
+        },10)
+    }   //3 3 3  */
+
+    //7.
+    /*var aa=function (item) {
+        console.log(item.a);
+    }
+    var list2=[
+        {
+            a:1
+        },
+        {
+            a:2
+        },
+        {
+            a:3
+        }
+    ]
+    for(var i=0;i<list2.length;i++){
+        var item=list2[i];
+        setTimeout((function (_item) {
+            return function () {
+                aa(_item);
+            }
+        })(item),10)
+    }    //1 2 3   */
+
+</script>
+</body>
+</html>
